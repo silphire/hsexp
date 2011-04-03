@@ -1,3 +1,4 @@
+import System
 import Data.List
 
 fizzbuzzCall :: Int -> String
@@ -8,7 +9,9 @@ fizzbuzzCall n
   | otherwise		= show n
 
 fizzbuzz :: Int -> String
-fizzbuzz n = intercalate " " $ map fizzbuzzCall [1..n]
+fizzbuzz n = unwords $ map fizzbuzzCall [1..n]
 
-main = putStrLn $ fizzbuzz 20
+main = do args <- getArgs
+	  if (length args) == 0 then putStrLn "argument required"
+				else putStrLn $ fizzbuzz $ (read (head args) :: Int)
 
