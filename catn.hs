@@ -1,6 +1,7 @@
 import System (getArgs)
 import IO
 
+catn :: String -> IO ()
 catn fileName = bracket (openFile fileName ReadMode)
 			hClose
 			(\h -> do hSetBuffering h LineBuffering
